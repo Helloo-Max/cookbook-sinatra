@@ -10,6 +10,10 @@ configure :development do
 end
 
 get '/' do #=> Router part
-  'Hello world!'
+  erb :index
   # [...] #=> Controller part
+end
+
+get '/about' do
+  erb :about
 end

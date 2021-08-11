@@ -1,3 +1,24 @@
-<p>
-  I'm in a <em>view</em>!
-</p>
+<h1>Welcome to the Cookbook 📖👨‍🍳</h1>
+
+<ul>
+  <% @recipes.each_with_index do |recipe, index| %>
+  <li>
+    <% marker = recipe.tried == 'true' ? '[x]' : '[ ]' %>
+
+    <%= index + 1 %> |
+    <%= marker %> |
+    <%= recipe.name %> |
+    <%= recipe.description %> |
+    <%= recipe.rating %> / 5 ⭐️ |
+    <%= recipe.prep_time %> ⏲ |
+
+    <!-- index is here the value of params to be passed to next page --> 
+    <a href="/recipes/<%= index %>/mark">Update Status</a>
+    <a href="/recipes/<%= index %>/delete">Destroy</a> |
+  </li>
+  <% end %>
+</ul>
+
+<a href="/new">Create new recipe</a>
+<br>
+<a href="/import">Import new recipe</a>
